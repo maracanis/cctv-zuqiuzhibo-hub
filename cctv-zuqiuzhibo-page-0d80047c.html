@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>足球直播 · 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9fd;
+      color: #1d2b3a;
+      line-height: 1.6;
+      padding: 0 20px 40px;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 18px 0 14px;
+      border-bottom: 1px solid #d3e3ed;
+    }
+
+    .logo {
+      font-weight: 560;
+      font-size: 1.4rem;
+      letter-spacing: -0.3px;
+      color: #1a6b77;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2f4b5e;
+      font-weight: 450;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #1b8c9c;
+    }
+
+    /* hero 区域 */
+    .hero {
+      margin: 48px 0 40px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #124c58;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 20px;
+      font-size: 1.05rem;
+      color: #2f4f5c;
+    }
+
+    .hero .inline-link {
+      background: #e3f2f0;
+      padding: 2px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .hero a {
+      color: #14666e;
+      text-decoration: underline;
+      font-weight: 500;
+      text-underline-offset: 3px;
+    }
+
+    /* 简明说明卡片 */
+    .guide-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px 30px 30px;
+      box-shadow: 0 4px 14px rgba(0, 40, 50, 0.06);
+      margin-bottom: 42px;
+      border-left: 4px solid #2e9aa8;
+    }
+
+    .guide-card h2 {
+      font-size: 1.4rem;
+      font-weight: 550;
+      color: #125d68;
+      margin-bottom: 14px;
+    }
+
+    .guide-card p {
+      margin-bottom: 12px;
+    }
+
+    .guide-card ul {
+      padding-left: 22px;
+      margin: 16px 0 8px;
+    }
+
+    .guide-card li {
+      margin-bottom: 8px;
+    }
+
+    /* 三个场景模块（网格卡片） */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 48px;
+    }
+
+    .scene-card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px 18px 22px;
+      box-shadow: 0 4px 12px rgba(28, 80, 90, 0.05);
+      transition: box-shadow 0.2s, transform 0.15s;
+      border: 1px solid #d5e7ed;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 8px 20px rgba(20, 90, 100, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .scene-icon {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 530;
+      color: #155e6a;
+      margin: 8px 0 10px;
+    }
+
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #2c4d58;
+    }
+
+    .scene-card .tag {
+      display: inline-block;
+      background: #e5f3f0;
+      padding: 1px 12px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #12616c;
+      margin-top: 10px;
+      font-weight: 480;
+    }
+
+    /* 常见说明 / FAQ 摘要 */
+    .faq-section {
+      background: white;
+      border-radius: 24px;
+      padding: 28px 30px 20px;
+      box-shadow: 0 4px 14px rgba(0, 40, 50, 0.04);
+      margin-bottom: 40px;
+    }
+
+    .faq-section h2 {
+      font-size: 1.4rem;
+      font-weight: 550;
+      color: #125d68;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #daeaf0;
+      padding-bottom: 10px;
+    }
+
+    .faq-item {
+      margin-bottom: 22px;
+    }
+
+    .faq-item strong {
+      display: inline-block;
+      color: #1b6e7a;
+      font-weight: 550;
+      margin-bottom: 4px;
+    }
+
+    .faq-item p {
+      color: #2f4d58;
+    }
+
+    .faq-item a {
+      color: #14707b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* 提醒块 */
+    .note-box {
+      background: #e2f1f0;
+      border-radius: 18px;
+      padding: 18px 24px;
+      margin: 20px 0 10px;
+      border-left: 4px solid #1f8b98;
+    }
+
+    .note-box p {
+      font-size: 0.95rem;
+      color: #134f59;
+    }
+
+    .note-box a {
+      color: #0f6b78;
+      font-weight: 500;
+      text-decoration: underline;
+    }
+
+    /* 页脚 */
+    .footer {
+      border-top: 1px solid #d0e2ea;
+      padding: 26px 0 10px;
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #446773;
+    }
+
+    .footer a {
+      color: #1b7c89;
+      text-decoration: none;
+      font-weight: 460;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式 */
+    @media (max-width: 820px) {
+      .scenes-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .scenes-grid {
+        grid-template-columns: 1fr;
+      }
+      .guide-card,
+      .faq-section {
+        padding: 20px 16px;
+      }
+      .footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+
+    /* 辅助 */
+    .small-meta {
+      color: #4a7885;
+      font-size: 0.8rem;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+      <span class="logo">⚽ 指南·直播</span>
+      <div class="nav-links">
+        <a href="#">首页</a>
+        <a href="#">场景</a>
+        <a href="#">提示</a>
+      </div>
+    </nav>
+
+    <!-- hero 区域：从简明指南和访问提醒切入 -->
+    <div class="hero">
+      <h1>看球·简明指南</h1>
+      <p>
+        想顺畅地观看一场喜爱的比赛，提前了解平台特点很有帮助。
+        我们整理了关于 <a href="https://cctv-zuqiuzhibo.com" class="inline-link">足球直播</a> 的访问思路、常见疑问和场景建议，
+        帮助你更从容地找到适合自己的观赛节奏。
+      </p>
+      <p style="font-size: 0.95rem; color: #336d79;">
+        从访问准备到实际使用，这份指南都能给你温和的参考。
+      </p>
+    </div>
+
+    <!-- 核心介绍卡片（轻量说明） -->
+    <div class="guide-card">
+      <h2>⚡ 访问前的小提醒</h2>
+      <p>
+        网络环境、设备兼容性以及直播频道的排期，都会影响观赛体验。
+        建议初次使用 <a href="https://cctv-zuqiuzhibo.com">足球直播</a> 时，
+        先确认浏览器版本、网络稳定性，以及是否允许页面请求必要权限。
+      </p>
+      <ul>
+        <li>保持浏览器为最新版本，部分旧内核可能出现播放异常。</li>
+        <li>部分赛事需要等待几分钟信号同步，属于正常缓冲。</li>
+        <li>如果遇到卡顿，可尝试刷新或切换网络。</li>
+      </ul>
+      <p style="margin-top: 8px;">
+        这些准备能帮助你在比赛开场时更快进入状态，减少中途调整的麻烦。
+      </p>
+    </div>
+
+    <!-- 三个场景模块（网格卡片） -->
+    <div class="scenes-grid">
+      <div class="scene-card">
+        <div class="scene-icon">🏟️</div>
+        <h3>深夜看球</h3>
+        <p>欧洲赛事常在后半夜开赛。提前关掉不必要的后台应用，设置勿扰模式，让直播画面更流畅、声音更纯净。</p>
+        <span class="tag">低延迟优先</span>
+      </div>
+      <div class="scene-card">
+        <div class="scene-icon">📱</div>
+        <h3>移动端随行</h3>
+        <p>通勤或外出时用手机观看，建议开启「自适应画质」。注意流量消耗，也可提前连接WiFi。</p>
+        <span class="tag">省流量模式</span>
+      </div>
+      <div class="scene-card">
+        <div class="scene-icon">🖥️</div>
+        <h3>多屏同看</h3>
+        <p>同时关注多场较量？电脑端配合分屏或画中画功能，不错过任何关键进球。记得检查系统音频输出。</p>
+        <span class="tag">多任务友好</span>
+      </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-section">
+      <h2>📌 常见疑问摘要</h2>
+      <div class="faq-item">
+        <strong>为什么有时会提示“直播未开始”？</strong>
+        <p>赛前信号尚未推送，通常开赛前5-15分钟频道才会激活。如果临近开场仍无画面，可以尝试刷新页面。更多细节可以参考 <a href="https://cctv-zuqiuzhibo.com">足球直播</a> 内的赛事预告。</p>
+      </div>
+      <div class="faq-item">
+        <strong>清晰度可以调节吗？</strong>
+        <p>大多数场次提供多档清晰度，你可以根据网络状况选择。如果觉得模糊，先检查一下是否选了“流畅”模式。部分版权限制场次可能固定画质。</p>
+      </div>
+      <div class="faq-item">
+        <strong>能不能只收听声音？</strong>
+        <p>有些浏览器支持后台播放音频，但直播流可能因标签页切换而暂停。你可以单独使用音频模式（如有提供）或保持页面可见。</p>
+      </div>
+
+      <!-- 提醒块嵌入自然句子，同时包含 a 标签 -->
+      <div class="note-box">
+        <p>⚡ 提醒：赛前半小时通常访问量较大，建议提早进入频道等待。如果你正在寻找一个稳定的观赛渠道，<a href="https://cctv-zuqiuzhibo.com">足球直播</a> 是一个值得保存的选择。遇到问题优先查看帮助页或调整网络。</p>
+      </div>
+    </div>
+
+    <!-- 轻量 footer -->
+    <footer class="footer">
+      <span>© 页面仅为介绍参考 · 非官方</span>
+      <span>建议与反馈 · <a href="https://cctv-zuqiuzhibo.com">足球直播</a></span>
+    </footer>
+
+  </div>
+</body>
+</html>
